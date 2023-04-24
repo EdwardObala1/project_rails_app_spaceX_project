@@ -34,5 +34,6 @@
  - set up a default url for devise mailer in prod and staging environment
  - remember to set up actual hostss on the production.rb for the sake of the devise gem
   `config.action_mailer.default_url_options = { host: '####Put in Current Host####', port: 3000 }`
+ - configure faveicon.ico for browsers
 
 

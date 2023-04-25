@@ -34,19 +34,36 @@ class HomeController < ApplicationController
   end
 
   def images
-    if @images == nil
-      url = 'https://api.spacexdata.com/v3/launches'
+    # Ideas for this create a database and store new images there
+    # purge the database on a daily
+    # this is because I am limited to 1000 requests on the Nasa website
+    # @images.to_h['collection']['items'].first.to_h['data']
+    # @images.to_h['collection']['items'].first.to_h['links']
+    # both return hashes in array
+    if @image_of_day == nil
+      url = 'https://api.nasa.gov/planetary/apod'
       url = URI(url)
-      http = Net::HTTP.new(url.host, url.port)
-      http.use_ssl = true
-      request = Net::HTTP::Get.new(url)
-      request['Content-type'] = 'application/json'
-      response = http.request(request)
+      params = { 'api_key' => ENV['NASA_API_KEY']}
+      url.query = URI.encode_www_form(params)
+      response = Net::HTTP.get_response(url)
     end
     if response.code == "200"
-      @data ||= JSON.parse(response.body)
+      @image_of_day ||= JSON.parse(response.body)
     else
-      @data = nil
+      @image_of_day = nil
+    end
+
+    if @images == nil
+      url = 'https://images-api.nasa.gov/search?media_type=image'
+      url = URI(url)
+      response = Net::HTTP.get_response(url)
+    end
+
+    if response.code == "200"
+      @images ||= JSON.parse(response.body)
+      @images = @images.to_h
+    else
+      @images = nil
     end
   end
 

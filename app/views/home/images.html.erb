@@ -1,0 +1,31 @@
+<div class = 'container-fluid' style = 'text-align: center; color:white;'>
+    <div class = 'row' style = 'margin:2%;'>
+        <h2>NASA'S IMAGE OF THE DAY</h2>
+    </div>
+    <div class = 'col' style = 'margin-top:2%;'>
+        <% @image = @image_of_day['hdurl'] %>
+        <div class = 'bg-image' style = 'background-image: url(<%= @image %>);'>
+            <%= image_tag @image_of_day['hdurl'], :class => 'u-non-blurred', :name => 'daily_image', :style => 'margin-left:auto; margin-right:auto; width:50%; height:40%; border:solid; border-color:black; border-width:5px;' %>
+        </div>
+        <div class = 'row' style = 'width:50%; margin-left:auto; margin-right:auto; margin-top:1%;'>
+            <label for = 'daily_image' > <%= @image_of_day['explanation'] %> </label>
+            <p style = 'margin-top:1%; font-size:10px;'> @Copyright: <%= @image_of_day['copyright'] %> </p>
+        </div>
+    </div>
+
+    <% if @images != nil %>
+        <div class = 'row' style = 'margin:2%; margin-top:5%;'>
+            <h2>OTHER IMAGES</h2>
+        </div>
+
+        <div class = 'row'>
+            <% @images['collection']['items'].each do |image| %>
+                <div class = 'col-3'>
+                    <a href = '/' ><%= image_tag image.to_h['links'].first['href'], :style => 'wdith:200px; height:150px;' %></a>
+                    <p><%= image.to_h['data'].first['title'] %></p>
+                </div>
+            <% end %>
+        </div>
+
+    <% end %>
+</div>

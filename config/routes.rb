@@ -5,10 +5,9 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/home/show', to: 'home#show'
   get 'home/launches/:page', to: 'home#launches', as: 'launches'
+  get '/home/images', to: 'home#images'
 
   Rails.application.routes.draw do
-  get 'home/index'
-  get 'home/show'
     devise_for :users, controllers: {
       sessions: 'users/sessions'
     }

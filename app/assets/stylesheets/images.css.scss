@@ -1,0 +1,27 @@
+body, html {
+    height: 100%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .u-non-blurred::before { 
+    /* Add the blur effect */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* Full height */
+    // height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Use for content that should not be blurred */
+.u-non-blurred {
+    position: relative;
+    z-index: 1;
+  }

@@ -1,5 +1,5 @@
 ## RAILS PROJECT
-  ### SPACEX DATA LAUNCH AND INFORMATION TRACKING INFORMATION
+  ### SPACE LAUNCH TRACKING AND LEARNING PLATFORM
   ___
  
  <img src="./app/assets/images/starship.gif"  width="500" >

@@ -22,7 +22,7 @@ class HomeController < ApplicationController
     if response.code == "200"
       @data ||= JSON.parse(response.body)
     else
-      @data = nil
+      @data = [{}]
     end
      # because paginate with kamari did not work I am making my own
     @items_per_page = 20
@@ -33,7 +33,24 @@ class HomeController < ApplicationController
     @data
   end
 
-  def show
+  def images
+    if @images == nil
+      url = 'https://api.spacexdata.com/v3/launches'
+      url = URI(url)
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      request = Net::HTTP::Get.new(url)
+      request['Content-type'] = 'application/json'
+      response = http.request(request)
+    end
+    if response.code == "200"
+      @data ||= JSON.parse(response.body)
+    else
+      @data = nil
+    end
+  end
+
+  def videos
   end
 end
 

@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   patch '/comment/:id', to: 'comment#update', as: 'update_comment'
   delete '/comment/:id', to: 'comment#destroy', as: 'comment'
 
+  post '/reply', to: 'reply#create', as: 'replies'
+  patch '/reply/:id', to: 'reply#update', as: 'update_reply'
+  delete '/reply/:id', to: 'reply#destroy', as: 'reply'
+
   Rails.application.routes.draw do
     devise_for :users, controllers: {
       sessions: 'users/sessions'

@@ -1,15 +1,10 @@
-# core functionality
-# show comments
-# add comment
-# delete comment
-
 class CommentController < ApplicationController
   def show
     @comments = Comment.all
   end
 
   def create
-    @comments = Comment.new(params.require(:comment).permit(:user_id, :comment))
+    @comment = Comment.new(params.require(:comment).permit(:user_id, :comment))
   end
 
   def update

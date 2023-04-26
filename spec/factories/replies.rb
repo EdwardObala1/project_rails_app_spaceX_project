@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :reply do
-    comment { nil }
+    association :comment
     reply { "MyString" }
-    text { "MyString" }
   end
 end

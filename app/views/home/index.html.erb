@@ -1,1 +1,50 @@
-<h1 style = 'style:color;'>Trial</h1>
+<div class = 'container-fluid' style = 'color:white;'>
+    <div class ='row' style = 'box-shadow: inset 350px 0 100px 0 #151620; background-image: url(<%=image_path 'starship.gif' %>) ; background-size:100%; background-repeat:no-repeat; background-position:center; height:300px;'>
+    </div>
+    <div class = 'row'>
+
+        <div class = 'col-4'>
+            <div class = 'row'>
+                <p style = 'margin:5%; font-size:30px; font-family:inter;'>
+                    SpaceTrak is a public forum to discuss all space related matters, it has direct interaction with Nasa's api that can get you all
+                    the pictures of the day in High definition and a cluster of Nasa images that are updated on a regular basis.
+                    You can also view videos embedded from youtube from popular space related channels such as the SpaceX channel and the discover space channel
+                    You can also get a list of all the spaceX launches and information on the launch dates, the badge icons and such and soon enough a list of all the Nasa launches.
+
+                    To further the platform a youtube api will be included to get live and recent videos from select channels on space content..
+                    Expect to see this soon enough
+                </p>
+            </div>
+
+            <div class = 'row'>
+                <img src="<%= image_path 'logo.png'%>" style= 'padding:2px; margin:10%; margin-left:auto; margin-right:auto; width:30%; height:30%;' alt="spacetrak logo">
+            </div>
+        </div>
+
+        <div class = 'col-5' style = 'text-align:center; border:solid; margin-left:auto; margin-top:2%; margin-right:auto; border-color:grey; border-radius:40px;'>
+            <h5>Let's Talk about space</h5>
+            
+            <div class = 'row' style = 'overflow-y: scroll; margin:5%; height:60%; border-radius:40px; background-color:white;'>
+                <% @comments.each do |comment| %>
+                    <div class 'row' style = 'margin-left:2%; margin-top:2%; color:black; height:20%; width:70%;'>
+                        <div class ='row'>
+                            <div class = 'col-7'>
+                                <p style = 'text-align:left; font-size:30px;'><%= User.where(id: comment['user_id']).pluck(:user_name).join %></p>
+                            </div>
+                        </div>
+                        <p style = 'text-align:left; margin-to:5%; font-size:20px;'><%= comment['comment'] %></p>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class = 'row'>
+                <%= form_with(model: Comment, url: comments_path) do |form| %>
+                    <div class="form-group" style = 'height:70%;'>
+                        <%= form.text_field :comment, class: "form-control", :style => 'margin-left:auto; margin-right:auto; height:60%; width:70%;' %>
+                    </div>
+                    <%= form.submit "Submit", class: "btn btn-primary", :style => 'margin-top:5%;' %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -30,10 +30,9 @@ ___
     * docker-compose up
 
 #### Development Notes
-    - set up a default url for devise mailer in prod and staging environment
-    - remember to set up actual hostss on the production.rb for the sake of the devise gem
-    `config.action_mailer.default_url_options = { host: '####Put in Current Host####', port: 3000 }`
-    - configure faveicon.ico for browsers
-    - write about the testing
-    - write about the .env file
-
+- Testing was carried out using rspec and with heavy emphasis on practicing Test Driven Development
+- Rspec configurationns were changed for ideal testing routines and adding formating to read the documentation better
+- Feature isolation was also observed with relevant features having their own branch on the github repository
+- Coupling of Controllers, Models was avoided with complete component isolation
+- The development cycle was an iterative cycle especially with the testing being carried out write before running a feature and doing the same constantly
+- API Keys are secured in private .env files for any need for the .env please reach out to me or generate a similar api key at the [Nasa Api Site]('https://api.nasa.gov/') or the [Google Developer Site](https://developers.google.com/) and get the youtube v3 api secret keys

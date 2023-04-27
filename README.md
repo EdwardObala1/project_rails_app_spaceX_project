@@ -35,4 +35,5 @@ ___
 - Feature isolation was also observed with relevant features having their own branch on the github repository
 - Coupling of Controllers, Models was avoided with complete component isolation
 - The development cycle was an iterative cycle especially with the testing being carried out write before running a feature and doing the same constantly
+- This was enabled with the debugging tool pry
 - API Keys are secured in private .env files for any need for the .env please reach out to me or generate a similar api key at the [Nasa Api Site]('https://api.nasa.gov/') or the [Google Developer Site](https://developers.google.com/) and get the youtube v3 api secret keys
